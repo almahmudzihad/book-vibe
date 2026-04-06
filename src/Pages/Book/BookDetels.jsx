@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { useParams } from "react-router";
 
 const bookPromis = fetch("/booksData.json").then((res) => res.json());
@@ -17,6 +17,7 @@ function BookDetels() {
   }
 
   const {
+    bookId,
     bookName,
     author,
     image,
@@ -28,6 +29,18 @@ function BookDetels() {
     publisher,
     yearOfPublishing,
   } = book;
+  const [storedBooks, setStoredBooks] = useState([]);
+  const handelMarkasRead = (bookId) =>{
+   
+    const isExistBook = storedBooks.find(book => book.bookId === bookId);
+    if(isExistBook){
+        alert('the book alrady add to read')
+    }else{
+        setStoredBooks([...storedBooks, book])
+        alert('add hobe')
+    }
+    console.log(storedBooks)
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -96,7 +109,9 @@ function BookDetels() {
 
           {/* Buttons */}
           <div className="flex gap-4 pt-5">
-            <button className="px-6 py-2 bg-gray-800 text-white rounded-md text-sm">
+            <button 
+            onClick={()=>handelMarkasRead(bookId)}
+            className="px-6 py-2 bg-gray-800 text-white rounded-md text-sm">
               Mark as Read
             </button>
             <button className="px-6 py-2 border border-gray-300 rounded-md text-sm">

@@ -6,6 +6,7 @@ function Homepage() {
   return (
     <div>
       <Hero></Hero>
+      <h2 className="text-2xl font-bold text-center">book</h2>
       <Allbooks />
       
     </div>

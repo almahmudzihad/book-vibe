@@ -5,7 +5,7 @@ import "./navbar.css"
 function Navbar() {
     const links = (<>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'book'}>Listed Book</NavLink></li>
+        <li><NavLink to={'/book'}>Listed Book</NavLink></li>
         <li><NavLink to={'/eeee'}>Page to Read</NavLink></li>
     </>);
   return (

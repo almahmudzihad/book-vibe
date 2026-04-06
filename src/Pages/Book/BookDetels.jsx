@@ -1,5 +1,7 @@
-import React, { use, useState } from "react";
+import React, { use, useContext, useState } from "react";
 import { useParams } from "react-router";
+import { BookContext } from "../../Component/Context/BookContext";
+
 
 const bookPromis = fetch("/booksData.json").then((res) => res.json());
 
@@ -29,18 +31,12 @@ function BookDetels() {
     publisher,
     yearOfPublishing,
   } = book;
-  const [storedBooks, setStoredBooks] = useState([]);
-  const handelMarkasRead = (bookId) =>{
-   
-    const isExistBook = storedBooks.find(book => book.bookId === bookId);
-    if(isExistBook){
-        alert('the book alrady add to read')
-    }else{
-        setStoredBooks([...storedBooks, book])
-        alert('add hobe')
-    }
-    console.log(storedBooks)
-  }
+
+
+
+  const {handelMarkasRead } = useContext(BookContext);
+    
+    
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -110,7 +106,7 @@ function BookDetels() {
           {/* Buttons */}
           <div className="flex gap-4 pt-5">
             <button 
-            onClick={()=>handelMarkasRead(bookId)}
+            onClick={()=>handelMarkasRead(book)}
             className="px-6 py-2 bg-gray-800 text-white rounded-md text-sm">
               Mark as Read
             </button>

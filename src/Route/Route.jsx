@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
         index: true,
         Component: Homepage
       },{
-        path: 'book',
+        path: '/book',
         Component: Book
       },
       {

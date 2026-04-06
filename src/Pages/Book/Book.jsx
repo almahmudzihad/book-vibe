@@ -1,14 +1,14 @@
-import React, { use } from 'react'
-
+import React, { useContext } from 'react'
+import { BookContext } from '../../Component/Context/BookContext';
 
 function Book() {
-    
-    
-    return (
-        <div className='container mx-auto'>
-            <div className='bg-gray-300'>
-                <h1>List book</h1>
-            </div>
+
+      const {storedBooks } = useContext(BookContext);
+      console.log(storedBooks);
+      return(
+        <div>
+            <h2>{storedBooks.bookName}</h2>
+            <h1>amar book list</h1>
         </div>
     )
 }

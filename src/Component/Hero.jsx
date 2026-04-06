@@ -1,6 +1,7 @@
 import React from "react";
 
 function Hero() {
+  
   return (
     <div className="hero bg-gray-100  min-h-[70vh] rounded-2xl my-6 container mx-auto px-6">
       <div className="hero-content flex-col lg:flex-row-reverse items-center lg:items-start gap-10 w-full">

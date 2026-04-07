@@ -1,16 +1,33 @@
-import React, { useContext } from 'react'
-import { BookContext } from '../../Component/Context/BookContext';
+import React, { useContext } from "react";
+import { BookContext } from "../../Component/Context/BookContext";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+
+import WishListed from "../../Component/ListedBook/WishListed";
+import ReadListed from "../../Component/ListedBook/ReadListed";
 
 function Book() {
-
-      const {storedBooks } = useContext(BookContext);
-      console.log(storedBooks);
-      return(
-        <div>
-            <h2>{storedBooks.bookName}</h2>
-            <h1>amar book list</h1>
-        </div>
-    )
+ 
+  return (
+    <div className="container mx-auto">
+      <Tabs>
+        <TabList>
+          <Tab>Read Book</Tab>
+          <Tab>Wishlist Book</Tab>
+        </TabList>
+            
+        <TabPanel>
+          <ReadListed />
+        </TabPanel>
+        <TabPanel>
+          <WishListed></WishListed>
+        </TabPanel>
+      </Tabs>
+      
+      
+      
+    </div>
+  );
 }
 
-export default Book
+export default Book;

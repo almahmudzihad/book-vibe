@@ -1,12 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BookContext } from "../Context/BookContext";
 import { FaRegStar } from "react-icons/fa";
 
-function ReadListed() {
+function ReadListed({sotingType} ) {
     const { storedBooks } = useContext(BookContext);
+    const [filterRedlist, setFilterRedlist] = useState(storedBooks);
+    useEffect(()=>{
+      if(sotingType){
+        if(sotingType === "pages"){
+          const storedData = [...storedBooks].sort((a,b) => a.totalPages - b.totalPages)
+          console.log(storedData)
+          setFilterRedlist(storedData)
+        }else if(sotingType === "rating"){
+          const storedData = [...storedBooks].sort((a,b) => a.rating - b.rating)
+          console.log(storedData)
+          setFilterRedlist(storedData)
+        }
+      }
+    }, [sotingType, storedBooks ])
   return (
     <div className="space-y-5">
-      {storedBooks.map((wl, index) => (
+      {filterRedlist.map((wl, index) => (
         <div
           key={index}
           className="card bg-base-100 shadow-md rounded-lg overflow-hidden flex flex-col md:flex-row"

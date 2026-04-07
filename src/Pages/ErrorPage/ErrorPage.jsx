@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 function ErrorPage() {
   return (
@@ -12,12 +13,13 @@ function ErrorPage() {
       </p>
 
       <div className="mt-6 flex gap-4">
-        <a
-          href="/"
+        
+        <Link
+          to="/"
           className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition"
         >
           Go to Homepage
-        </a>
+        </Link>
         <a
           href="/contact"
           className="px-6 py-3 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-100 transition"

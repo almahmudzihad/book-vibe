@@ -2,22 +2,31 @@ import React, { useContext, useEffect, useState } from "react";
 import { BookContext } from "../Context/BookContext";
 import { FaRegStar } from "react-icons/fa";
 
-function ReadListed({sotingType} ) {
-    const { storedBooks } = useContext(BookContext);
-    const [filterRedlist, setFilterRedlist] = useState(storedBooks);
-    useEffect(()=>{
-      if(sotingType){
-        if(sotingType === "pages"){
-          const storedData = [...storedBooks].sort((a,b) => a.totalPages - b.totalPages)
-          console.log(storedData)
-          setFilterRedlist(storedData)
-        }else if(sotingType === "rating"){
-          const storedData = [...storedBooks].sort((a,b) => a.rating - b.rating)
-          console.log(storedData)
-          setFilterRedlist(storedData)
-        }
+function ReadListed({ sotingType }) {
+  const { storedBooks } = useContext(BookContext);
+  const [filterRedlist, setFilterRedlist] = useState(storedBooks);
+  useEffect(() => {
+    if (sotingType) {
+      if (sotingType === "pages") {
+        const storedData = [...storedBooks].sort(
+          (a, b) => a.totalPages - b.totalPages,
+        );
+        setFilterRedlist(storedData);
+      } else if (sotingType === "rating") {
+        const storedData = [...storedBooks].sort((a, b) => a.rating - b.rating);
+        setFilterRedlist(storedData);
       }
-    }, [sotingType, storedBooks ])
+    }
+  }, [sotingType, storedBooks]);
+  if (filterRedlist.length === 0) {
+    return (
+      <div className="h-[50vh] bg-gray-100 flex items-center justify-center">
+        <h1 className="text-2xl font-bold text-gray-500">
+          No Book in Read List
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className="space-y-5">
       {filterRedlist.map((wl, index) => (

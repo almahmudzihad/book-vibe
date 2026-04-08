@@ -8,14 +8,14 @@ import ReadListed from "../../Component/ListedBook/ReadListed";
 
 function Book() {
     const [sotingType, setSotingType] = useState('');
-    console.log(sotingType)
+    
     
   return (
     <div className="container mx-auto">
       <div className="flex justify-center my-2">
         <div className="dropdown dropdown-start">
         <div tabIndex={0} role="button" className="btn m-1">
-          Short by
+          Short by {sotingType}
         </div>
         <ul
           tabIndex="-1"

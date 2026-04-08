@@ -1,13 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BookContext } from "../Context/BookContext";
 import { FaRegStar } from "react-icons/fa";
 
-function WishListed() {
+function WishListed({sotingType}) {
   const { wishlist } = useContext(BookContext);
-
+  const [filterWishlest, setFilterWishlest] = useState(wishlist);
+      useEffect(()=>{
+        if(sotingType){
+          if(sotingType === "pages"){
+            const storedData = [...wishlist].sort((a,b) => a.totalPages - b.totalPages)
+            setFilterWishlest(storedData)
+          }else if(sotingType === "rating"){
+            const storedData = [...wishlist].sort((a,b) => a.rating - b.rating)
+            setFilterWishlest(storedData)
+          }
+        }
+      }, [sotingType, wishlist])
+if(filterWishlest.length === 0){
+  return (
+    <div className="h-[50vh] bg-gray-100 flex items-center justify-center">
+      <h1 className="text-2xl font-bold text-gray-500">No Book in Wish List</h1>
+    </div>
+  )
+}
   return (
     <div className="space-y-5">
-      {wishlist.map((wl, index) => (
+      {filterWishlest.map((wl, index) => (
         <div
           key={index}
           className="card bg-base-100 shadow-md rounded-lg overflow-hidden flex flex-col md:flex-row"

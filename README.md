@@ -4,6 +4,10 @@ Book Vibe is a modern web application built with **React**, designed to help use
 
 ---
 
+## 🌐 Live Demo
+👉 [Book Vibe on Netlify](https://book-vibe-zihad.netlify.app/book)
+
+
 ## 🚀 Features
 - Browse and view detailed information about books
 - Add books to **Read List** and **Wishlist**
@@ -20,6 +24,3 @@ Book Vibe is a modern web application built with **React**, designed to help use
 - **Storage:** localStorage
 - **Deployment:** Netlify
 
----
-
-## 📂 Project Structure

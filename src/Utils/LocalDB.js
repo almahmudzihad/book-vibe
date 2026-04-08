@@ -1,6 +1,6 @@
 const getAllReadListFromLocalDB = () => {
     const allReadList = localStorage.getItem("readList");
-    console.log(allReadList, "readList from local DB");
+    
 
     if (allReadList) return JSON.parse(allReadList);
     
